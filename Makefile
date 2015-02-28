@@ -6,7 +6,7 @@
 #    By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/19 14:14:39 by lchenut           #+#    #+#              #
-#    Updated: 2015/02/28 11:56:01 by lchenut          ###   ########.fr        #
+#    Updated: 2015/02/28 17:06:35 by lchenut          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,11 @@ INC_LIBFT  = libft
 
 OBJS_DIR   = objs
 
-SRCS       = game.c
+SRCS       = gm_init_tab.c		\
+			 game.c				\
+			 gm_moves.c			\
+			 gm_horizmoves.c	\
+			 gm_vertmoves.c
 
 S          = $(addprefix , $(SRCS:.c=.c~))
 
@@ -37,7 +41,7 @@ $(NAME): $(OBJS)
 	@echo "\033[1;32m>>> push_swap ok <<<\033[0m"
 
 $(OBJS_DIR)/%.o: %.c
-	$(CC) $(ALL_CFLAGS) -I $(INC_LIBFT)/ -c $< -o $@ -lncurses
+	$(CC) $(ALL_CFLAGS) -I $(INC_LIBFT)/ -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)	

@@ -6,7 +6,7 @@
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 13:30:26 by lchenut           #+#    #+#             */
-/*   Updated: 2015/02/28 15:07:59 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/02/28 17:18:22 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	gm_put_tab_to_window(int *tab, int j, int tmpx)
 	i = 0;
 	while (i < 4)
 	{
-		mvprintw(j, tmpx * i + tmpx / 2 - ft_intlen(tab[i]) / 2 + 1, "%i", tab[i]);
+		if (tab[i] != 0)
+			mvprintw(j, tmpx * i + tmpx / 2 - ft_intlen(tab[i]) / 2 + 1,
+					"%i", tab[i]);
 		i++;
 	}
 }
@@ -57,42 +59,15 @@ void	gm_trace_grid(int y, int x, int **tab)
 	}
 }
 
-int **ft_init()
-{
-	int **tab;
-	int i;
-	int j;
-
-	if (!(tab = (int **)malloc(sizeof(int *) * 4)))
-		return (NULL);
-	i = 0;
-	while (i < 4)
-	{
-		if (!(tab[i] = (int *)malloc(sizeof(int) * 4)))
-		{
-			free(tab);
-			return (NULL);
-		}
-		j = 0;
-		while (j < 4)
-		{
-			tab[i][j] = i * j * 100000;
-			j++;
-		}
-		i++;
-	}
-	return (tab);
-}
-
 int main(void)
 {
 	int kc;
 	int x;
 	int y;
+	int **tab;
 	WINDOW *screen;
 
-int **tab;
-tab = ft_init();
+	tab = gm_init_tab();
 	if (!(screen = initscr()))
 		return (0);
 	keypad(screen, true);
@@ -101,17 +76,29 @@ tab = ft_init();
 		kc = getch();
 		getmaxyx(screen, y, x);
 		clear();
-		gm_trace_grid(y, x, tab);
 		if (kc == 27 || y < 10 || x < 38)
 			break ;
 		else if (kc == KEY_UP)
-			mvprintw(y / 2, x / 2, "key up");
+		{
+			gm_vert(tab, 4, kc);
+			gm_new_element(tab);
+		}
 		else if (kc == KEY_DOWN)
-			mvprintw(y / 2, x / 2, "key down");
+		{
+			gm_vert(tab, 4, kc);
+			gm_new_element(tab);
+		}
 		else if (kc == KEY_LEFT)
-			mvprintw(y / 2, x / 2, "key left");
+		{
+			gm_horiz(tab, 4, kc);
+			gm_new_element(tab);
+		}
 		else if (kc == KEY_RIGHT)
-			mvprintw(y / 2, x / 2, "key right");
+		{
+			gm_horiz(tab, 4, kc);
+			gm_new_element(tab);
+		}
+		gm_trace_grid(y, x, tab);
 		refresh();
 	}
 	endwin();
