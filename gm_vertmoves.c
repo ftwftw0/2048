@@ -6,7 +6,7 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 16:36:09 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/02/28 17:11:33 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/02/28 18:14:28 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,14 @@ static int	check_columnup(int **tab,  int size, int column)
         else if (i == 2)
 		{
             tmp = y;
-			if (tmp > 0)
-				while (tab[tmp - 1][column] == 0 && tmp > 0)
-					tmp--;
-            if (tab[tmp][column] == tab[tmp + 1][column])
+			while (tmp > 0)
+			{
+				if ((tab[tmp - 1][column] != 0
+					&& tab[tmp - 1][column] != tab[y + 1][column]))
+					break ;
+				tmp--;
+			}
+            if (tab[tmp][column] == tab[y + 1][column])
 				tab[tmp][column] *= 2;
             else
                 tab[tmp][column] = tab[y + 1][column];
@@ -62,10 +66,14 @@ static int	check_columndown(int **tab,  int size, int column)
         else if (i == 2)
 		{
             tmp = y;
-			if (tmp > 0)
-				while (tab[y - 1][column] == 0 && tmp < size - 1)
-					tmp++;
-            if (tab[tmp][column] == tab[tmp - 1][column])
+			while (tmp < size - 1)
+			{
+				if ((tab[tmp + 1][column] != 0
+					&& tab[tmp + 1][column] != tab[y - 1][column]))
+					break ;
+				tmp++;
+			}
+            if (tab[tmp][column] == tab[y - 1][column])
 				tab[tmp][column] *= 2;
             else
                 tab[tmp][column] = tab[y - 1][column];

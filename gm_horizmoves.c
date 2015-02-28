@@ -6,7 +6,7 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 16:23:25 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/02/28 17:10:02 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/02/28 18:05:12 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ static int	check_lineright(int *line,  int size)
         else if (i == 2)
 		{
             tmp = x;
-			if (tmp > 0)
-				while (line[tmp - 1] == 0 && tmp < size - 1)
+			if (tmp < size - 1)
+				while ((line[tmp + 1] == 0 || line[tmp + 1] == line[x - 1])
+					   && tmp < size - 1)
 					tmp++;
             if (line[tmp] == line[x - 1])
 				line[tmp] *= 2;
@@ -63,7 +64,8 @@ static int	check_lineleft(int *line,  int size)
 		{
             tmp = x;
 			if (tmp > 0)
-				while (line[tmp - 1] == 0 && tmp > 0)
+				while ((line[tmp - 1] == 0 || line[tmp - 1] == line[x + 1])
+					   && tmp > 0)
 					tmp--;
             if (line[tmp] == line[x + 1])
 				line[tmp] *= 2;
