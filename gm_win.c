@@ -6,7 +6,7 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 15:34:45 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/03/01 17:40:02 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/03/01 17:45:52 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	gm_winscreen(WINDOW *screen, int ***tab, int *test)
 			*test = 1;
 			clear();
 			return (2);
-		}	
+		}
 	}
 	return (0);
 }

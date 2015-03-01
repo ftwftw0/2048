@@ -6,7 +6,7 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 16:36:09 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/03/01 13:44:07 by flagoutt         ###   ########.fr       */
+/*   Updated: 2015/03/01 17:43:15 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ static int	check_columnup(int **tab, int size, int column, int kc)
 
 int			gm_vert(int **tab, int size, int keycode)
 {
-    int x;
+	int x;
 	int ret;
 
-    x = 0;
+	x = 0;
 	ret = 0;
 	if (keycode == KEY_UP)
 		while (x < size)
@@ -47,5 +47,5 @@ int			gm_vert(int **tab, int size, int keycode)
 	else
 		while (x < size)
 			ret += check_columndown(tab, size, x++, keycode);
-    return (ret);
+	return (ret);
 }

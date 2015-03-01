@@ -6,10 +6,10 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 13:57:08 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/03/01 15:01:36 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/03/01 17:45:14 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
- 
+
 #include "game.h"
 
 int		gm_score(int **tab, int size)
