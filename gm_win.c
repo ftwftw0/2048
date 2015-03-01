@@ -6,13 +6,13 @@
 /*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 15:34:45 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/03/01 17:45:52 by flagoutt         ###   ########.fr       */
+/*   Updated: 2015/03/01 17:53:02 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
-void	gm_winscreen_message(int y, int x)
+void		gm_winscreen_message(int y, int x)
 {
 	int start;
 
@@ -26,7 +26,16 @@ void	gm_winscreen_message(int y, int x)
 	mvprintw(2 * y + 3, start, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 }
 
-int	gm_winscreen(WINDOW *screen, int ***tab, int *test)
+static int	gm_reset(int ***tab, int *test)
+{
+	gm_erase_tab(tab);
+	*tab = gm_init_tab();
+	*test = 0;
+	clear();
+	return (1);
+}
+
+int			gm_winscreen(WINDOW *screen, int ***tab, int *test)
 {
 	int x;
 	int y;
@@ -44,13 +53,7 @@ int	gm_winscreen(WINDOW *screen, int ***tab, int *test)
 		if (kc == 'e' || kc == 'E' || kc == 27)
 			return (0);
 		if (kc == 'r' || kc == 'R')
-		{
-			gm_erase_tab(tab);
-			*tab = gm_init_tab();
-			*test = 0;
-			clear();
-			return (1);
-		}
+			return (gm_reset(tab, test));
 		if (kc == 'c' || kc == 'C')
 		{
 			*test = 1;
@@ -61,7 +64,7 @@ int	gm_winscreen(WINDOW *screen, int ***tab, int *test)
 	return (0);
 }
 
-int		gm_checkwin(int **tab, int size, int test)
+int			gm_checkwin(int **tab, int size, int test)
 {
 	int x;
 	int y;
