@@ -6,7 +6,7 @@
 #    By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/19 14:14:39 by lchenut           #+#    #+#              #
-#    Updated: 2015/03/01 11:08:52 by lchenut          ###   ########.fr        #
+#    Updated: 2015/03/01 14:09:27 by flagoutt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRCS       = gm_init_tab.c		\
 			 gm_vertmoves.c		\
 			 gm_game_over.c		\
 			 gm_push.c			\
-			 gm_merge.c
+			 gm_merge.c			\
+			 gm_score.c
 
 S          = $(addprefix , $(SRCS:.c=.c~))
 

@@ -6,7 +6,7 @@
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 10:32:06 by lchenut           #+#    #+#             */
-/*   Updated: 2015/03/01 11:07:55 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/03/01 14:08:13 by flagoutt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ int     gm_vert(int **tab, int size, int keycode);
 int		gm_game_over(int ***tab, WINDOW *screen);
 int		gm_push(int **tab, int size, int linecol, int kc);
 int		gm_merge(int **tab, int size, int linecol, int kc);
-
+int		gm_score(int **tab, int size);
 #endif
