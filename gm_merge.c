@@ -6,7 +6,7 @@
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 10:58:16 by lchenut           #+#    #+#             */
-/*   Updated: 2015/03/01 13:48:57 by flagoutt         ###   ########.fr       */
+/*   Updated: 2015/03/01 14:52:31 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,10 @@ static int	gm_merge_left(int **tab, int size, int line)
 	ret = 0;
 	while (i < size - 1)
 	{
-		if (tab[line][size] == tab[line][size + 1] && tab[line][size])
+		if (tab[line][i] == tab[line][i + 1] && tab[line][i])
 		{
-			tab[line][size] = tab[line][size] * 2;
-			tab[line][size + 1] = 0;
+			tab[line][i] = tab[line][i] * 2;
+			tab[line][i + 1] = 0;
 			ret = ret + 1;
 		}
 		i++;

@@ -6,13 +6,13 @@
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 17:57:49 by lchenut           #+#    #+#             */
-/*   Updated: 2015/03/01 10:49:25 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/03/01 17:35:03 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
-static void	gm_erase_tab(int ***tab)
+void	gm_erase_tab(int ***tab)
 {
 	free((*tab)[0]);
 	(*tab)[0] = NULL;
@@ -38,7 +38,7 @@ static void	gm_print_message_game_over(WINDOW *screen)
 	mvprintw(y / 2 + 2, x / 2 - 8, "Press e to exit");
 }
 
-int			gm_game_over(int ***tab, WINDOW *screen)
+int			gm_game_over(int ***tab, WINDOW *screen, int *test)
 {
 	int kc;
 
@@ -49,6 +49,7 @@ int			gm_game_over(int ***tab, WINDOW *screen)
 		gm_print_message_game_over(screen);
 		if (kc == 'r' || kc == 'R')
 		{
+			*test = 0;
 			*tab = gm_init_tab();
 			clear();
 			return (1);

@@ -6,7 +6,7 @@
 #    By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/19 14:14:39 by lchenut           #+#    #+#              #
-#    Updated: 2015/03/01 14:09:27 by flagoutt         ###   ########.fr        #
+#    Updated: 2015/03/01 17:40:10 by lchenut          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,15 +19,17 @@ INC_LIBFT  = libft
 
 OBJS_DIR   = objs
 
-SRCS       = gm_init_tab.c		\
-			 game.c				\
+SRCS       = game.c				\
+			 gm_init_tab.c		\
+			 gm_trace_grid.c	\
 			 gm_moves.c			\
 			 gm_horizmoves.c	\
 			 gm_vertmoves.c		\
 			 gm_game_over.c		\
 			 gm_push.c			\
 			 gm_merge.c			\
-			 gm_score.c
+			 gm_score.c			\
+			 gm_win.c
 
 S          = $(addprefix , $(SRCS:.c=.c~))
 

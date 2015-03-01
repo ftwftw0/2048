@@ -6,7 +6,7 @@
 #    By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/19 14:14:39 by lchenut           #+#    #+#              #
-#    Updated: 2015/02/26 15:43:43 by lchenut          ###   ########.fr        #
+#    Updated: 2015/03/01 15:00:45 by lchenut          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 	   ft_strnew.c ft_btoa.c ft_otoa.c ft_ltoa.c ft_utoa.c ft_htoa.c \
 	   ft_capitalize.c ft_minimalize.c ft_is_in.c ft_strfnew.c ft_deltabstr.c \
 	   ft_puttabstr.c ft_strtabdup.c ft_swap_char.c ft_dbletoa.c ft_atol.c \
+	   ft_depow2.c \
 	   ft_intlen.c ft_quick_sort.c ft_isspace.c ft_pf_after_effect.c \
 	   ft_pf_check_length.c ft_pf_check_modifier.c \
 	   ft_pf_print_and_close.c ft_pf_split.c ft_pf_treat_bin.c \

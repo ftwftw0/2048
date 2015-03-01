@@ -6,7 +6,7 @@
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 12:00:54 by lchenut           #+#    #+#             */
-/*   Updated: 2015/02/14 12:23:48 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/03/01 15:00:59 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,6 @@ void			ft_swap_char(char *a, char *b);
 int				ft_intlen(int i);
 void			ft_quick_sort(int *tab, int start, int end);
 int				ft_isspace(int i);
+int				ft_depow2(int nb);
 
 #endif

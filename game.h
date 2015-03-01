@@ -6,7 +6,7 @@
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 10:32:06 by lchenut           #+#    #+#             */
-/*   Updated: 2015/03/01 14:08:13 by flagoutt         ###   ########.fr       */
+/*   Updated: 2015/03/01 17:40:08 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,22 @@
 
 enum	e_const
 {
-	WIN_VALUE = 2048
+	WIN_VALUE = 8
 };
 
 int		**gm_init_tab(void);
 void	gm_new_element(int **tab);
 int		gm_count_empty_spaces(int **tab);
+void	gm_trace_grid(int y, int x, int **tab);
 int		cmp_case(int case1, int case2);
 int     gm_horiz(int **tab, int size, int keycode);
 int     gm_vert(int **tab, int size, int keycode);
-int		gm_game_over(int ***tab, WINDOW *screen);
+int		gm_game_over(int ***tab, WINDOW *screen, int *test);
+void	gm_erase_tab(int ***tab);
 int		gm_push(int **tab, int size, int linecol, int kc);
 int		gm_merge(int **tab, int size, int linecol, int kc);
 int		gm_score(int **tab, int size);
+int		gm_checkwin(int **tab, int size, int test);
+int		gm_winscreen(WINDOW *screen, int ***tab, int *test);
+
 #endif

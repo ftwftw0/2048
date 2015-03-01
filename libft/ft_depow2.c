@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gm_score.c                                         :+:      :+:    :+:   */
+/*   ft_depow2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/01 13:57:08 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/03/01 15:01:36 by lchenut          ###   ########.fr       */
+/*   Created: 2015/03/01 15:00:04 by lchenut           #+#    #+#             */
+/*   Updated: 2015/03/01 15:00:24 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
- 
-#include "game.h"
 
-int		gm_score(int **tab, int size)
+#include "libft.h"
+
+int	ft_depow2(int nb)
 {
-	int score;
-	int x;
-	int y;
+	int i;
 
-	score = 0;
-	x = 0;
-	y = 0;
-	while (y < size)
+	i = 1;
+	while (nb > 2)
 	{
-		x = 0;
-		while (x < size)
-		{
-			score += (ft_depow2(tab[y][x]) - 1) * tab[y][x];
-			x++;
-		}
-		y++;
+		nb /= 2;
+		i++;
 	}
-	return (score);
+	return (i);
 }

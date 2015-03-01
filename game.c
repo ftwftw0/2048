@@ -6,73 +6,29 @@
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 13:30:26 by lchenut           #+#    #+#             */
-/*   Updated: 2015/03/01 10:58:11 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/03/01 17:40:06 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
-
-void	gm_put_tab_to_window(int *tab, int j, int tmpx)
-{
-	int i;
-
-	i = 0;
-	while (i < 4)
-	{
-		if (tab[i] != 0)
-			mvprintw(j, tmpx * i + tmpx / 2 - ft_intlen(tab[i]) / 2 + 1,
-					"%i", tab[i]);
-		i++;
-	}
-}
-
-void	gm_trace_grid(int y, int x, int **tab)
-{
-	int i;
-	int j;
-	int tmpx;
-	int tmpy;
-	int height;
-
-	j = 0;
-	height = 0;
-	y = ((y - 5) / 4) * 4 + 5;
-	x = ((x - 5) / 4) * 4 + 5;
-	tmpy = y / 4;
-	tmpx = x / 4;
-	while (j < y)
-	{
-		i = 0;
-		while (i < x)
-		{
-			if ((i % tmpx) == 0 && (j % tmpy) == 0)
-				mvprintw(j, i, "+");
-			else if ((i % tmpx) == 0)
-				mvprintw(j, i, "|");
-			else if ((j % tmpy) == 0)
-				mvprintw(j, i, "-");
-			i++;
-		}
-		if ((j % tmpy) == tmpy / 2)
-			gm_put_tab_to_window(tab[height++], j, tmpx);
-		j++;
-	}
-}
 
 int main(void)
 {
 	int kc;
 	int x;
 	int y;
+	int test;
 	int **tab;
 	WINDOW *screen;
 
 	srand(time(NULL));
+	test = 0;
 	if (!(tab = gm_init_tab()))
 		return (0);
 	if (!(screen = initscr()))
 		return (0);
 	keypad(screen, true);
+	start_color();
 	curs_set(0);
 	getmaxyx(screen, y, x);
 	gm_trace_grid(y, x, tab);
@@ -91,8 +47,11 @@ int main(void)
 			gm_new_element(tab);
 		else if (kc == KEY_RIGHT && gm_horiz(tab, 4, kc))
 			gm_new_element(tab);
-		else if (!gm_count_empty_spaces(tab) && !gm_game_over(&tab, screen))
+		else if (!gm_count_empty_spaces(tab) && !gm_game_over(&tab, screen, &test))
 			break ;
+		if (gm_checkwin(tab, 4, test))
+			if (!(gm_winscreen(screen, &tab, &test)))
+				break ;
 		gm_trace_grid(y, x, tab);
 		refresh();
 	}
