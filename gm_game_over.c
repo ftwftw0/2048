@@ -6,7 +6,7 @@
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 17:57:49 by lchenut           #+#    #+#             */
-/*   Updated: 2015/03/01 19:14:20 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/03/01 19:43:30 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int			gm_game_over(int ***tab, WINDOW *screen, int *test)
 	score = gm_score(*tab, 4);
 	if (*tab)
 		gm_erase_tab(tab);
+	gm_print_message_game_over(screen, score);
 	while ((kc = getch()))
 	{
 		gm_print_message_game_over(screen, score);

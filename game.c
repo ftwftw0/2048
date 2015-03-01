@@ -6,7 +6,7 @@
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 13:30:26 by lchenut           #+#    #+#             */
-/*   Updated: 2015/03/01 18:42:25 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/03/01 19:43:16 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,27 @@ static int	gm_end_it_now(int x, int y)
 	return (0);
 }
 
+static int	gm_check_valid_tab(int **tab)
+{
+	int x;
+	int y;
+
+	x = 0;
+	while (x < 4)
+	{
+		y = 0;
+		while (y < 4)
+		{
+			if (tab[x][y] == 0 || (x < 3 && tab[x][y] == tab[x + 1][y])
+					|| (y < 3 && tab[x][y] == tab[x][y + 1]))
+				return (1);
+			y++;
+		}
+		x++;
+	}
+	return (0);
+}
+
 int			main(void)
 {
 	WINDOW	*screen;
@@ -70,7 +91,7 @@ int			main(void)
 		clear();
 		gm_if_forest(kc, tab);
 		if (kc == 27 || xy[1] < 10 || xy[0] < 38 ||
-			(!gm_count_empty_spaces(tab) && !gm_game_over(&tab, screen, &test))
+			(!gm_check_valid_tab(tab) && !gm_game_over(&tab, screen, &test))
 		|| (gm_checkwin(tab, 4, test) && !(gm_winscreen(screen, &tab, &test))))
 			break ;
 		gm_trace_grid(xy[1], xy[0], tab);
