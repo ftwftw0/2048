@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_moves.c                                         :+:      :+:    :+:   */
+/*   gm_checkwin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/28 14:54:22 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/03/01 11:08:13 by lchenut          ###   ########.fr       */
+/*   Created: 2015/03/01 18:57:26 by lchenut           #+#    #+#             */
+/*   Updated: 2015/03/01 18:59:48 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
-/*
-**  Returns 1 if even, 2 if first case goes to second case, 0 if nothing moves
-*/
-
-int		cmp_case(int case1, int case2)
+int			gm_checkwin(int **tab, int size, int test)
 {
-	if (case1 == case2 && case1 != 0)
-		return (1);
-	else if (case1 == 0 && case2)
-		return (2);
-	else
+	int x;
+	int y;
+
+	if (test)
 		return (0);
+	y = -1;
+	while (++y < size)
+	{
+		x = 0;
+		while (x < size)
+			if (tab[y][x++] >= WIN_VALUE)
+				return (1);
+	}
+	return (0);
 }

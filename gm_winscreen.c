@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gm_win.c                                           :+:      :+:    :+:   */
+/*   gm_winscreen.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/01 15:34:45 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/03/01 17:53:02 by flagoutt         ###   ########.fr       */
+/*   Created: 2015/03/01 19:00:17 by lchenut           #+#    #+#             */
+/*   Updated: 2015/03/01 19:00:20 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
-void		gm_winscreen_message(int y, int x)
+static void	gm_winscreen_message(int y, int x)
 {
 	int start;
 
@@ -60,24 +60,6 @@ int			gm_winscreen(WINDOW *screen, int ***tab, int *test)
 			clear();
 			return (2);
 		}
-	}
-	return (0);
-}
-
-int			gm_checkwin(int **tab, int size, int test)
-{
-	int x;
-	int y;
-
-	if (test)
-		return (0);
-	y = -1;
-	while (++y < size)
-	{
-		x = 0;
-		while (x < size)
-			if (tab[y][x++] >= WIN_VALUE)
-				return (1);
 	}
 	return (0);
 }

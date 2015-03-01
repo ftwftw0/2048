@@ -6,13 +6,13 @@
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 14:53:00 by lchenut           #+#    #+#             */
-/*   Updated: 2015/03/01 17:40:04 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/03/01 18:52:00 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
-void	gm_put_tab_to_window(int *tab, int j, int tmpx)
+static void	gm_put_tab_to_window(int *tab, int j, int tmpx)
 {
 	int i;
 
@@ -37,9 +37,25 @@ void	gm_put_tab_to_window(int *tab, int j, int tmpx)
 	}
 }
 
-void	gm_trace_grid(int y, int x, int **tab)
+static void	gm_trace_grid_tmp(int j, int tmpx, int tmpy, int x)
 {
 	int i;
+
+	i = 0;
+	while (i < x)
+	{
+		if ((i % tmpx) == 0 && (j % tmpy) == 0)
+			mvprintw(j, i, "+");
+		else if ((i % tmpx) == 0)
+			mvprintw(j, i, "|");
+		else if ((j % tmpy) == 0)
+			mvprintw(j, i, "-");
+		i++;
+	}
+}
+
+void		gm_trace_grid(int y, int x, int **tab)
+{
 	int j;
 	int tmpx;
 	int tmpy;
@@ -53,21 +69,10 @@ void	gm_trace_grid(int y, int x, int **tab)
 	tmpx = x / 4;
 	while (j < y)
 	{
-		i = 0;
-		while (i < x)
-		{
-			if ((i % tmpx) == 0 && (j % tmpy) == 0)
-				mvprintw(j, i, "+");
-			else if ((i % tmpx) == 0)
-				mvprintw(j, i, "|");
-			else if ((j % tmpy) == 0)
-				mvprintw(j, i, "-");
-			i++;
-		}
+		gm_trace_grid_tmp(j, tmpx, tmpy, x);
 		if ((j % tmpy) == tmpy / 2)
 			gm_put_tab_to_window(tab[height++], j, tmpx);
 		j++;
 	}
 	mvprintw(y, 0, "Score : %i", gm_score(tab, 4));
 }
-

@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gm_score.c                                         :+:      :+:    :+:   */
+/*   gm_erase_tab.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flagoutt <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/01 13:57:08 by flagoutt          #+#    #+#             */
-/*   Updated: 2015/03/01 18:51:40 by lchenut          ###   ########.fr       */
+/*   Created: 2015/03/01 18:42:43 by lchenut           #+#    #+#             */
+/*   Updated: 2015/03/01 18:43:09 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
-int		gm_score(int **tab, int size)
+void		gm_erase_tab(int ***tab)
 {
-	int score;
-	int x;
-	int y;
-
-	score = 0;
-	x = 0;
-	y = 0;
-	while (y < size)
-	{
-		x = 0;
-		while (x < size)
-		{
-			score += (ft_depow2(tab[y][x]) - 1) * tab[y][x];
-			x++;
-		}
-		y++;
-	}
-	return (score);
+	free((*tab)[0]);
+	(*tab)[0] = NULL;
+	free((*tab)[1]);
+	(*tab)[1] = NULL;
+	free((*tab)[2]);
+	(*tab)[2] = NULL;
+	free((*tab)[3]);
+	(*tab)[3] = NULL;
+	free(*tab);
+	*tab = NULL;
 }

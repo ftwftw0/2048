@@ -1,50 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gm_init_tab.c                                      :+:      :+:    :+:   */
+/*   gm_count_empty_spaces.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/28 16:21:47 by lchenut           #+#    #+#             */
-/*   Updated: 2015/03/01 18:51:07 by lchenut          ###   ########.fr       */
+/*   Created: 2015/03/01 18:47:23 by lchenut           #+#    #+#             */
+/*   Updated: 2015/03/01 18:49:23 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
-static int	**gm_new_tab(void)
+int		gm_count_empty_spaces(int **tab)
 {
-	int		**tab;
 	int		i;
 	int		j;
+	int		k;
 
-	if (!(tab = (int **)malloc(sizeof(int *) * 4)))
-		return (NULL);
 	i = 0;
-	while (i < 4)
+	j = 0;
+	while (j < 4)
 	{
-		j = 0;
-		if (!(tab[i] = (int *)malloc(sizeof(int) * 4)))
+		k = 0;
+		while (k < 4)
 		{
-			i--;
-			while (i > 0)
-				free(tab[i--]);
-			free(tab);
-			return (NULL);
+			if (tab[j][k] == 0)
+				i++;
+			k++;
 		}
-		while (j < 4)
-			tab[i][j++] = 0;
-		i++;
+		j++;
 	}
-	return (tab);
-}
-
-int			**gm_init_tab(void)
-{
-	int		**tab;
-
-	tab = gm_new_tab();
-	gm_new_element(tab);
-	gm_new_element(tab);
-	return (tab);
+	return (i);
 }

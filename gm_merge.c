@@ -6,7 +6,7 @@
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 10:58:16 by lchenut           #+#    #+#             */
-/*   Updated: 2015/03/01 14:52:31 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/03/01 18:51:16 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static int	gm_merge_down(int **tab, int size, int column)
 	}
 	return (ret);
 }
-
 
 static int	gm_merge_up(int **tab, int size, int column)
 {
@@ -60,7 +59,7 @@ static int	gm_merge_right(int **tab, int size, int line)
 	ret = 0;
 	while (size >= 1)
 	{
-		if (tab [line][size] == tab[line][size - 1] && tab[line][size])
+		if (tab[line][size] == tab[line][size - 1] && tab[line][size])
 		{
 			tab[line][size] = tab[line][size] * 2;
 			tab[line][size - 1] = 0;

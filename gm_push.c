@@ -6,13 +6,13 @@
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 10:49:30 by lchenut           #+#    #+#             */
-/*   Updated: 2015/03/01 13:48:20 by flagoutt         ###   ########.fr       */
+/*   Updated: 2015/03/01 18:51:30 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
-static int		gm_push_down(int **tab, int size, int column)
+static int	gm_push_down(int **tab, int size, int column)
 {
 	int tmp;
 	int ret;
@@ -41,7 +41,7 @@ static int		gm_push_down(int **tab, int size, int column)
 	return (ret);
 }
 
-static int		gm_push_up(int **tab, int size, int column, int i)
+static int	gm_push_up(int **tab, int size, int column, int i)
 {
 	int tmp;
 	int ret;
@@ -69,7 +69,7 @@ static int		gm_push_up(int **tab, int size, int column, int i)
 	return (ret);
 }
 
-static int		gm_push_right(int **tab, int size, int line)
+static int	gm_push_right(int **tab, int size, int line)
 {
 	int tmp;
 	int ret;
@@ -98,7 +98,7 @@ static int		gm_push_right(int **tab, int size, int line)
 	return (ret);
 }
 
-static int		gm_push_left(int **tab, int size, int line, int i)
+static int	gm_push_left(int **tab, int size, int line, int i)
 {
 	int tmp;
 	int ret;
