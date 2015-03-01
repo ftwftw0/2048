@@ -6,7 +6,7 @@
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 13:30:26 by lchenut           #+#    #+#             */
-/*   Updated: 2015/02/28 17:18:22 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/03/01 10:58:11 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,15 @@ int main(void)
 	int **tab;
 	WINDOW *screen;
 
-	tab = gm_init_tab();
+	srand(time(NULL));
+	if (!(tab = gm_init_tab()))
+		return (0);
 	if (!(screen = initscr()))
 		return (0);
 	keypad(screen, true);
+	curs_set(0);
+	getmaxyx(screen, y, x);
+	gm_trace_grid(y, x, tab);
 	while (1)
 	{
 		kc = getch();
@@ -78,34 +83,23 @@ int main(void)
 		clear();
 		if (kc == 27 || y < 10 || x < 38)
 			break ;
-		else if (kc == KEY_UP)
-		{
-			gm_vert(tab, 4, kc);
+		else if (kc == KEY_UP && gm_vert(tab, 4, kc))
 			gm_new_element(tab);
-		}
-		else if (kc == KEY_DOWN)
-		{
-			gm_vert(tab, 4, kc);
+		else if (kc == KEY_DOWN && gm_vert(tab, 4, kc))
 			gm_new_element(tab);
-		}
-		else if (kc == KEY_LEFT)
-		{
-			gm_horiz(tab, 4, kc);
+		else if (kc == KEY_LEFT && gm_horiz(tab, 4, kc))
 			gm_new_element(tab);
-		}
-		else if (kc == KEY_RIGHT)
-		{
-			gm_horiz(tab, 4, kc);
+		else if (kc == KEY_RIGHT && gm_horiz(tab, 4, kc))
 			gm_new_element(tab);
-		}
+		else if (!gm_count_empty_spaces(tab) && !gm_game_over(&tab, screen))
+			break ;
 		gm_trace_grid(y, x, tab);
 		refresh();
 	}
 	endwin();
-	if (kc == 27)
+	if (y >= 10 && x >= 38)
 		ft_printf("Bye, see you later\n");
 	else
 		ft_printf("\033[31m/!\\ Window size too small /!\\\033[0m\n");
-	ft_printf("%i %i\n", 8 * 4 + 5, 4 * 1 + 5);
 	return (0);
 }

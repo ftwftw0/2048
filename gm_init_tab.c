@@ -6,7 +6,7 @@
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 16:21:47 by lchenut           #+#    #+#             */
-/*   Updated: 2015/02/28 16:55:52 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/03/01 09:33:19 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ void	gm_new_element(int **tab)
 	int		j;
 	int		k;
 
-	i = rand() % gm_count_empty_spaces(tab) + 1;
+	j = gm_count_empty_spaces(tab);
+	if (j == 0)
+		return ;
+	i = rand() % j + 1;
 	j = 0;
 	while (j < 4)
 	{
@@ -86,7 +89,6 @@ int		**gm_init_tab(void)
 {
 	int		**tab;
 
-	srand(time(NULL));
 	tab = gm_new_tab();
 	gm_new_element(tab);
 	gm_new_element(tab);
