@@ -5,3 +5,4 @@ We both learnt to use the shell graphical library called NCurses.
 
 Here's a preview :
 
+[![2048 Remake](http://img.youtube.com/vi/5XIW3XJunSI/0.jpg)](https://youtu.be/5XIW3XJunSI "2048 Remake")
